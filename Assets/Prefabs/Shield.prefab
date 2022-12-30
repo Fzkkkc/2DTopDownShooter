@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &9131264970081097545
+--- !u!1 &6618013338037539190
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 108260142233975059}
-  - component: {fileID: 2420930045782083817}
-  - component: {fileID: 8222915272975712112}
+  - component: {fileID: 6618013338037539189}
+  - component: {fileID: 6618013338037539188}
+  - component: {fileID: 6618013338037539191}
   m_Layer: 0
-  m_Name: fireball22Enemy
-  m_TagString: Untagged
+  m_Name: Shield
+  m_TagString: Shield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &108260142233975059
+--- !u!4 &6618013338037539189
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9131264970081097545}
+  m_GameObject: {fileID: 6618013338037539190}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.9, y: 1.9, z: 0}
+  m_LocalPosition: {x: 1.0573, y: -2.75, z: 0}
+  m_LocalScale: {x: 0.6555, y: 0.8493, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &2420930045782083817
+--- !u!212 &6618013338037539188
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9131264970081097545}
+  m_GameObject: {fileID: 6618013338037539190}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -74,36 +74,30 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d9ca6ea522186f343bec26fbe6642375, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a83bb160ff53f824c9630116d1ef997e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 6.95, y: 5.16}
+  m_Size: {x: 1.61, y: 0.69}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8222915272975712112
-MonoBehaviour:
+--- !u!58 &6618013338037539191
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9131264970081097545}
+  m_GameObject: {fileID: 6618013338037539190}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cebe68b7fa7e78e48ad2df55bce8c1a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 12
-  lifetime: 0.6
-  distance: 0.5
-  damage: 1
-  whatIsSolid:
-    serializedVersion: 2
-    m_Bits: 512
-  effect: {fileID: 2254762737982851137, guid: 6e387f962632602408c40f518bc73894, type: 3}
-  sound: {fileID: 3749989209131847222, guid: b4221e268f30f114d939d1fb9e5662cd, type: 3}
-  enemyBullet: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.008369156, y: -0.009606783}
+  serializedVersion: 2
+  m_Radius: 0.39696917

@@ -34,6 +34,12 @@ public class Player : MonoBehaviour
     public GameObject soundPotion;
     public GameObject soundSwitch;
 
+    [Header("Key")]
+    public GameObject keyIcon;
+    public GameObject soundKey;
+    public GameObject wallEffect;
+
+
     public enum ControlType {PC, Android}
     
 
@@ -41,7 +47,7 @@ public class Player : MonoBehaviour
     private Vector2 moveInput;
     private Vector2 moveVelocity;
     private Animator anim;
-
+    private bool keyButtonPushed;
 
 
     private bool facingRight = true;
@@ -155,6 +161,30 @@ public class Player : MonoBehaviour
             SwitchWeapon();
             Instantiate(soundSwitch, transform.position, Quaternion.identity);
             Destroy(other.gameObject);
+        }
+        else if (other.CompareTag("Key"))
+        {
+            keyIcon.SetActive(true);
+            Instantiate(soundKey, transform.position, Quaternion.identity);
+            Destroy(other.gameObject);
+        }
+    }
+
+    public void OnKeyButtonDown()
+    {
+
+        keyButtonPushed = !keyButtonPushed;
+
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Door") && keyButtonPushed && keyIcon.activeInHierarchy)
+        {
+            Instantiate(wallEffect, collision.transform.position, Quaternion.identity);
+            keyIcon.SetActive(false);
+            collision.gameObject.SetActive(false);
+            keyButtonPushed = false;
         }
     }
 

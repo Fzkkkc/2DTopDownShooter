@@ -18,36 +18,48 @@ public class Enemy : MonoBehaviour
     public int damage;
     private float stopTime;
     public float startStopTime;
-    public float normalSpeed;
+
     private Player Player;
     private Animator anim;
     public GameObject sound;
     private Animator camAnim;
+    private addRoom room;
+
+    [HideInInspector] public bool playerNotInRoom;
+    private bool stopped;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
         camAnim = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Animator>();
         Player = FindObjectOfType<Player>();
+        room = GetComponentInParent<addRoom>();
     }
     private void Update()
     {
-
-        if (stopTime <=0)
+        if (!playerNotInRoom)
         {
-            speed = normalSpeed;
+            if (stopTime <= 0)
+            {
+                stopped = false;
+            }
+            else
+            {
+                stopped = true;
+                stopTime -= Time.deltaTime;
+            }
         }
         else
         {
-            speed = 0;
-            stopTime -= Time.deltaTime;
+            stopped = true;
         }
+        
 
         if (health <=0)
-        {
-            Instantiate(deathEffect, transform.position, Quaternion.identity);
+        {          
             Destroy(gameObject);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            room.enemies.Remove(gameObject);
+            Instantiate(deathEffect, transform.position, Quaternion.identity);
         }
 
 
@@ -60,7 +72,12 @@ public class Enemy : MonoBehaviour
             transform.eulerAngles = new Vector3(0, 0, 0);
         }
 
-        transform.position = Vector2.MoveTowards(transform.position, Player.transform.position, speed * Time.deltaTime);
+        if (!stopped)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, Player.transform.position, speed * Time.deltaTime);
+        }
+
+       
 
     }
 
